@@ -321,6 +321,9 @@ define Package/v2ray-core/install
 	$(INSTALL_DATA) \
 		$(PKG_BUILD_DIR)/release/config/{geoip,geosite}.dat \
 		$(1)/usr/bin
+
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/root/etc/init.d/v2ray $(1)/etc/init.d/v2ray
 endef
 
 define Package/v2ray-core-mini/install
@@ -339,6 +342,9 @@ ifneq ($(CONFIG_PACKAGE_v2ray_mini_exclude_assets),y)
 		$(PKG_BUILD_DIR)/release/config/{geoip,geosite}.dat \
 		$(1)/usr/bin
 endif
+
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/root/etc/init.d/v2ray $(1)/etc/init.d/v2ray
 endef
 
 ifneq ($(CONFIG_PACKAGE_v2ray_$(BUILD_VARIANT)_exclude_assets),y)
